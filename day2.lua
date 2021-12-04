@@ -1,13 +1,18 @@
 inp = "inp/day2.txt"
 
-horizontal = 0
-depth = 0
-
+cmds = {}
 for line in io.lines(inp) do
   words = {}
   for word in string.gmatch(line, "%w+") do
     table.insert(words, word)
   end
+  table.insert(cmds,words)
+end
+
+horizontal = 0
+depth = 0
+
+for _, words in ipairs(cmds) do
   dir = words[1]
   count = words[2]
 
@@ -28,11 +33,7 @@ horizontal = 0
 depth = 0
 aim = 0
 
-for line in io.lines(inp) do
-  words = {}
-  for word in string.gmatch(line, "%w+") do
-    table.insert(words, word)
-  end
+for _, words in ipairs(cmds) do
   dir = words[1]
   count = words[2]
 
