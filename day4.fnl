@@ -1,5 +1,5 @@
 (local fennel (require :fennel))
-(global pp (fn [x] (print (fennel.view x))))
+(local utils (require :utils))
 
 (fn parse-inp [inp] 
   "Tries to parse inp, returning a table with:
@@ -56,8 +56,9 @@
     (when (= "number" (type x)) (set sum (+ sum x))))
   sum)
 
-; Returns a score for the board (regardless of winning status)
-(fn score-board [tab final-number] (* final-number (sum-table tab)))
+(fn score-board [tab final-number]
+  "Returns a score for the board (regardless of winning status)"
+  (* final-number (sum-table tab)))
 
 (fn call-number [number board]
   "If the number appears on the board sets it to true"
@@ -103,14 +104,11 @@
                 (set losingscore score))))
   (values losingidx maxturns losingscore))
 
-(fn bold [x] 
-  "returns a string with input text bold + resets after"
-  (.. "\27[1m" x "\27[0m"))
 ;;;;;;;;;;;;;;
 (local inp "inp/day4.txt")
 (local inputs (parse-inp inp))
 (let [(idx turns score) (find-winner inputs)]
-  (print (.. "Day4: Part1: after " turns " turns board " idx " scores " (bold score))))
+  (print (.. "Day4: Part1: after " turns " turns board " idx " scores " (utils.bold score))))
 (local inputs (parse-inp inp))
 (let [(idx turns score) (find-loser inputs)]
-  (print (.. "Day4: Part2: after " turns " turns board " idx " scores " (bold score))))
+  (print (.. "Day4: Part2: after " turns " turns board " idx " scores " (utils.bold score))))
