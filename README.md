@@ -6,3 +6,5 @@ For regular lua
 
 For luajit + fennel with luajit instead
 `$ nix-shell -p luajit 'fennel.override { lua = luajit; }'`
+
+./aoc.sh should run all of them
