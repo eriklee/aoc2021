@@ -5,8 +5,7 @@
   "Returns a table of syntax strings (not massively helpful tbh...)"
   (var tbl {})
   (each [l (io.lines filename)] (table.insert tbl l))
-  tbl
-  )
+  tbl)
 
 (fn syn-score-char [c]
   "Returns the syntax error score for the char"
