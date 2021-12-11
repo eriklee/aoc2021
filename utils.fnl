@@ -13,4 +13,9 @@
     (when (= "number" (type x)) (set sum (+ sum x))))
   sum)
 
-{:bold bold :tab-inc tab-inc :sum-table sum-table}
+(fn table-append [tbl newvals]
+  "Appends the second table to the first"
+  (for [i 1 (length newvals)]
+    (table.insert tbl (. newvals i))))
+
+{:bold bold :tab-inc tab-inc :sum-table sum-table :table-append table-append}
