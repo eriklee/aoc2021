@@ -84,6 +84,6 @@
 ;(local inp-file "inp/day12_test.txt")
 (var edges (parse-inp inp-file))
 (local paths (search edges can-visit1))
-(print "Day12: Part1: There are " (utils.bold paths) " unique paths")
+(print (.. "Day12: Part1: There are " (utils.bold paths) " unique paths"))
 (local paths (search edges can-visit2))
-(print "Day12: Part2: There are " (utils.bold paths) " unique paths (with slightly different rules...)")
+(print (.. "Day12: Part2: There are " (utils.bold paths) " unique paths (with slightly different rules...)"))
