@@ -18,4 +18,14 @@
   (for [i 1 (length newvals)]
     (table.insert tbl (. newvals i))))
 
-{:bold bold :tab-inc tab-inc :sum-table sum-table :table-append table-append}
+(fn tlength [t]
+  "Returns the size of a table even if it has gaps or isn't an array..."
+  (accumulate [sz 0
+               _ _ (pairs t)]
+              (+ 1 sz)))
+
+(fn clone [tbl] (var t2 []) (each [_ v (ipairs  tbl)] (table.insert t2 v)) t2)
+
+{:bold bold :tab-inc tab-inc
+ :sum-table sum-table :table-append table-append
+ :tlength tlength :clone clone}
