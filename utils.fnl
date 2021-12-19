@@ -2,6 +2,14 @@
   "returns a string with input text bold + resets after"
   (.. "\27[1m" x "\27[0m"))
 
+(fn boldred [x]
+  "returns a string with input text bold + resets after"
+  (.. "\27[31;1m" x "\27[0m"))
+
+(fn boldgreen [x]
+  "returns a string with input text bold + resets after"
+  (.. "\27[32;1m" x "\27[0m"))
+
 (fn tab-inc [tbl k ?v]
   "Increment value at k (by v or 1) (or sets if value is nil)"
   (tset tbl k (+ (or ?v 1) (or (?. tbl k) 0))))
@@ -26,6 +34,15 @@
 
 (fn clone [tbl] (var t2 []) (each [_ v (ipairs  tbl)] (table.insert t2 v)) t2)
 
-{:bold bold :tab-inc tab-inc
+(fn table-reverse [tbl]
+  "Returns a new table which is the first one reversed"
+  (var res [])
+  (for [i 1 (length tbl)]
+    (table.insert res (table.remove tbl)))
+  res)
+
+{:bold bold :boldred boldred :boldgreen boldgreen
+ :tab-inc tab-inc
  :sum-table sum-table :table-append table-append
- :tlength tlength :clone clone}
+ :tlength tlength :clone clone
+ :table-reverse table-reverse}

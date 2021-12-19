@@ -1,5 +1,6 @@
 (local fennel (require :fennel))
 (local utils (require :utils))
+(local unpack (or table.unpack _G.unpack))
 
 (fn parse-inp [filename]
   "returns a table where each entry is a crab position"
