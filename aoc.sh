@@ -15,3 +15,5 @@ fennel day13.fnl
 fennel day14.fnl
 fennel day15.fnl
 fennel day16.fnl
+fennel day17.fnl
+fennel day18.fnl
