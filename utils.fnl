@@ -40,10 +40,10 @@
 ; deeply clones a listy table of values
 (fn M.deepclone [tbl] 
   (var t2 [])
-  (each [_ v (ipairs  tbl)]
+  (each [k v (pairs  tbl)]
     (if (= "table" (type v))
-      (table.insert t2 (M.deepclone v))
-      (table.insert t2 v)))
+      (tset t2 k (M.deepclone v))
+      (tset t2 k v)))
   t2)
 
 (fn M.table-reverse [tbl]
